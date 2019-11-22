@@ -1,0 +1,12 @@
+name: {{globalAppName}}-{{application}}
+runtime: nodejs
+description: Deploy KeyCloak to the {{globalAppName}} cluster.
+template:
+  iamAdminUser:
+    description: The username to login to KeyCloak.
+  iamAdminPassword:
+    description: The password to login to KeyCloak.
+    secret: true
+  iamDbPassword:
+    description: The password for the KeyCloak database.
+    secret: true

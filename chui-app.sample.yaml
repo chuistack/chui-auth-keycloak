@@ -3,3 +3,4 @@ source: git@github.com:chuistack/chui-auth-keycloak.git
 type: auth
 variant: keycloak
 name: {{globalAppName}}-{{application}}
+pulumiOrgName: {{pulumiOrgName}}

@@ -2,5 +2,6 @@ version: 0.1.0
 source: git@github.com:chuistack/chui-auth-keycloak.git
 type: auth
 variant: keycloak
-name: {{globalAppName}}-{{application}}
+name: {{application}}
+globalAppName: {{globalAppName}}
 pulumiOrgName: {{pulumiOrgName}}

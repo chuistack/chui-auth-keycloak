@@ -11,10 +11,12 @@ import {
     KEYCLOAK_RELEASE_NAME,
     KEYCLOAK_TLS_SECRET,
 } from "../constants";
-import {getStack, ResourceOptions, StackReference} from "@pulumi/pulumi";
+import {ResourceOptions} from "@pulumi/pulumi";
 import {Chui} from "@chuistack/chui-lib";
 
 const chui = Chui.Config.loadCurrentConfig();
+
+const {Ingress} = Chui.App;
 
 const configureKeycloak = ({
     dependsOn,
@@ -40,11 +42,11 @@ const configureKeycloak = ({
                     "ingress": {
                         "enabled": true,
                         "annotations": {
-                            ...INGRESS_CLASS_ANNOTATION,
+                            ...Ingress.getIngressClassAnnotation(),
                             ...(
                                 chui.environment === "production" ?
-                                    PRODUCTION_CLUSTER_ISSUER_ANNOTATION :
-                                    STAGING_CLUSTER_ISSUER_ANNOTATION
+                                    Ingress.getProductionClusterIssuerAnnotation() :
+                                    Ingress.getStagingClusterIssuerAnnotation()
                             ),
                         },
                         "hosts": [
